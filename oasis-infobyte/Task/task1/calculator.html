@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+<style>
+    .calculator{
+        position:absolute;
+        background-color: #c8d9eb;
+        height:480px;
+        width:400px;
+        margin-left:450px;
+        margin-top: 100px;
+        border-radius: 10px;
+        border-color: 2px 2px black;
+
+    }
+    .brand-name{
+        position: relative;
+        
+        margin-top: 20px;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+    .screen{
+        position: relative;
+        font-size: 25px;
+        width:320px;
+        height: 45px;
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        background-color: rgb(172, 182, 182);
+        border-radius: 5px;
+    }
+    .calculator-button{
+        position: relative;
+        background-color:#f0d9da;
+        height:50px;
+        width:50px;
+        margin:5px;
+        margin-left: 15px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        border-radius: 5px;
+        border-color:#99c4f1 ;
+    }
+    .calculator-button:hover{
+        box-shadow: 0 5px 5px white;
+        transition-property: 0.4s;
+        background-color: #f4c1c4;
+
+    }
+
+    .calculator-button-operator{
+        background-color:#f9ecec;
+        height:35px;
+        width:50px;
+        margin:5px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        margin-left: 15px;
+        border-color:#99c4f1 ;
+        font-size: 15px;
+
+    }
+    .calculator-button-operator:hover{
+        box-shadow: 0 5px 5px white;
+        transition-property: 0.4s;
+        background-color: #99c4f1;
+
+    }
+    .bg-blue{
+        background-color:#f9ecec;
+    }
+    .bg-blue:hover{
+        background-color: #99c4f1;
+    }
+    .bg-red{
+        background-color:rgb(209, 116, 116) ;
+    }
+    .row{
+        margin-left: 15px;
+        
+    }
+
+    .calculator-button-enter{
+        background-color: #f2c0c2;
+        width:125px;
+        height: 50px;
+        margin-left:15px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 15px;
+        border-color:#99c4f1 ;
+    }
+    .calculator-button-enter:hover{
+        background-color: #ee9b9e;
+        box-shadow:0px 3px white;
+    }
+
+</style>
+</head>
+
+<script>
+    function handleclick(val)
+    {
+        const inputBox=document.getElementById("calculator-screen");
+        inputBox.value=(inputBox.value+val);
+    }
+
+    function clearScreen()
+    {
+        const inputBox=document.getElementById("calculator-screen");
+        inputBox.value="";
+    }
+
+    function calculate()
+    {
+        const inputBox=document.getElementById("calculator-screen");
+        const ans = eval(inputBox.value);
+        inputBox.value =ans;
+    }
+
+    function deleteNum() {
+    let inputBox = document.getElementById("calculator-screen");
+    inputBox.value = inputBox.value.slice(0, -1);
+}
+     
+</script>
+<body>
+    <div class="calculator">
+        <p class="brand-name">RTC</p>
+        <input type="text" class="screen" id="calculator-screen"/>
+
+        <div class="row">
+            <button class="calculator-button-operator" onClick="handleclick('(')">(</button>
+            <button class="calculator-button-operator" onClick="handleclick(')')">)</button>
+            <button class="calculator-button-operator" id="answerBtn" onClick="calculate()">=</button>
+            <button class="calculator-button-operator" id="button" onClick="deleteNum()">del</button>
+            <button class="calculator-button-operator" onClick="clearScreen()">clear</button>
+        </div>
+
+        <div class="row">
+        <button class="calculator-button" onClick="handleclick(7)">7</button>
+        <button class="calculator-button" onClick="handleclick(8)">8</button>
+        <button class="calculator-button" onClick="handleclick(9)">9</button>
+        <button class="calculator-button bg-blue" onClick="handleclick('%')">%</button>
+        <button class="calculator-button bg-blue" onClick="handleclick('√')">√</button>
+        </div>
+        <div class="row">
+            <button class="calculator-button" onClick="handleclick(4)">4</button>
+            <button class="calculator-button" onClick="handleclick(5)">5</button>
+            <button class="calculator-button" onClick="handleclick(6)">6</button>
+            <button class="calculator-button bg-blue" onClick="handleclick('*')">*</button>
+            <button class="calculator-button bg-blue" onClick="handleclick('÷')">÷</button>
+            </div>
+            <div class="row">
+                <button class="calculator-button" onClick="handleclick(1)">1</button>
+                <button class="calculator-button" onClick="handleclick(2)">2</button>
+                <button class="calculator-button" onClick="handleclick(3)">3</button>
+                <button class="calculator-button bg-blue" onClick="handleclick('+')">+</button>
+                <button class="calculator-button bg-blue" onClick="handleclick('-')">-</button>
+                </div>
+                <div class="row">
+                    <button class="calculator-button" onClick="handleclick('.')">00</button>
+                    <button class="calculator-button" onClick="handleclick(0)">0</button>
+                    <button class="calculator-button" onClick="handleclick('00')" >.</button>
+                    <button class="calculator-button-enter" id="enter" onClick="calculate()">Enter</button>
+                    </div>
+    </div>
+    
+</body>
+</html>
